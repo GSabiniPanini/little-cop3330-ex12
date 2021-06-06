@@ -38,6 +38,50 @@ public class App
 
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        App myApp = new App();
+
+        Integer principal = myApp.getprincipal();
+        double rate = myApp.getrate();
+        Integer years = myApp.getyears();
+        double total = myApp.calcinvestment(principal, rate, years);
+
+        myApp.output(rate, years, total);
+    }
+
+    public void output( double rate, Integer years, double total)
+    {
+        System.out.printf("After %d years at %.1f%%, the investment will be worth $%.0f.", years, rate * 100, total);
+    }
+
+    public double calcinvestment(Integer principal, double rate, Integer years)
+    {
+        double total = principal * (1 + rate * years);
+        if(total % .01 != 0)
+        {
+            total += .01;
+        }
+        return total;
+    }
+
+    public Integer getyears()
+    {
+        System.out.print("Enter the number of years: ");
+        Integer years = in.nextInt();
+        return years;
+    }
+
+    public double getrate()
+    {
+        System.out.print("Enter the rate of interest: ");
+        Double input = in.nextDouble();
+        Double rate = input / 100;
+        return rate;
+    }
+
+    public Integer getprincipal()
+    {
+        System.out.print("Enter the principal: ");
+        Integer principal = in.nextInt();
+        return principal;
     }
 }
