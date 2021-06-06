@@ -56,10 +56,6 @@ public class App
     public double calcinvestment(Integer principal, double rate, Integer years)
     {
         double total = principal * (1 + rate * years);
-        if(total % .01 != 0)
-        {
-            total += .01;
-        }
         return total;
     }
 
